@@ -1,0 +1,42 @@
+# This workflow uses a Makefile for building, testing, and linting a Python package
+
+name: Python package with Makefile
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Make and dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install -y make
+
+    - name: Set up virtual environment and dependencies
+      run: make setup
+
+    - name: Lint the code
+      run: make lint
+
+    - name: Run tests
+      run: make test
+
+    - name: Run coverage
+      run: make coverage

@@ -25,6 +25,8 @@ dev = [
     "pip-tools>=7.4.1",
     "ruff>=0.7.4",
     "mypy>=1.13.0",
+    "coverage>=7.6.3",
+    "coverage-lcov>=0.3",
 ]
 
 [tool.pytest.ini_options]

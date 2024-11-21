@@ -28,12 +28,12 @@ static-analysis:
 lint:
 	$(RUFF) check .
 
-test:
-	$(PYTEST) --verbose
-
 install:
 	$(PIP) install -e .
 
 coverage:
-	$(PYTEST) --cov=src/$(NAME) --cov-report=term-missing --cov-report html --verbose
+	$(PYTEST) --cov=src/$(NAME) --cov-report=term-missing --cov-report=xml --verbose
+
+coverage-lcov: coverage
+	$(COVERAGE-LCOV) --data_file_path $(COVERAGE_FILE) --output_file_path $(LCOV_FILE)
 

@@ -1,6 +1,6 @@
 # This workflow uses a Makefile for building, testing, and linting a Python package
 
-name: Python package with Makefile
+name: CI
 
 on:
   push:
@@ -12,6 +12,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     strategy:
       fail-fast: false
       matrix:
@@ -39,8 +41,11 @@ jobs:
     - name: Lint the code
       run: make lint
 
-    - name: Run tests
-      run: make test
-
     - name: Run coverage
-      run: make coverage
+      run: make coverage-lcov
+
+    - name: Upload coverage to Coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}  # This is GitHub's token for API calls
+        file: lcov.info

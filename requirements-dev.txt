@@ -13,9 +13,16 @@ certifi==2024.8.30
 charset-normalizer==3.4.0
     # via requests
 click==8.1.7
-    # via pip-tools
+    # via
+    #   coverage-lcov
+    #   pip-tools
 coverage[toml]==7.6.4
-    # via pytest-cov
+    # via
+    #   coverage-lcov
+    #   progarchivespy (pyproject.toml)
+    #   pytest-cov
+coverage-lcov==0.3.0
+    # via progarchivespy (pyproject.toml)
 idna==3.10
     # via requests
 iniconfig==2.0.0

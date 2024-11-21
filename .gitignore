@@ -17,3 +17,5 @@ htmlcov/
 dist/
 
 .vscode/
+
+.ruff_cache/

@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "pip-tools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "progarchivespy"
+version = "0.0.1"
+description = "Python API to fetch data from ProgArchives"
+authors = [
+    {name = "Nicolas Catalani", email = "nicocatalani@gmail.com"},
+]
+license = {text ="MIT"}
+readme = "README.md"
+keywords = ["api", "web-scraping", "music", "progressive-rock", "progarchives"]
+dependencies = [
+    "requests>=2.25.0",
+    "beautifulsoup4>=4.9.3",
+    "structlog>=24.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=6.0",
+    "pip-tools>=7.4.1",
+    "ruff>=0.7.4",
+    "mypy>=1.13.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "--strict-markers --maxfail=5 --tb=short"
+testpaths = [
+    "tests"
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+omit = [
+    "tests/*"
+]

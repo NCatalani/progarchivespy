@@ -1,0 +1,15 @@
+# Exclude tests
+exclude tests/*
+
+# Exclude development files
+exclude .editorconfig
+exclude .gitattributes
+exclude .gitignore
+exclude Makefile
+exclude defines.mk
+exclude requirements*.txt
+
+# Exclude distribution artifacts
+exclude dist/*
+exclude build/*
+exclude *.egg-info/*

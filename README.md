@@ -2,6 +2,7 @@
 
 
 [![Package CI](https://github.com/NCatalani/progarchivespy/actions/workflows/python-package.yml/badge.svg)](https://github.com/NCatalani/progarchivespy/actions/workflows/python-package.yml)[![Coverage Status](https://coveralls.io/repos/github/NCatalani/progarchivespy/badge.svg?branch=master)](https://coveralls.io/github/NCatalani/progarchivespy?branch=master)
+![Python Version](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2FNCatalani%2Fprogarchivespy%2Frefs%2Fheads%2Fmaster%2Fpyproject.toml)
 
 `progarchivespy` exposes a Python API for interacting with ProgArchives' data through web scraping. It abstracts HTML parsing, providing high-level services to retrieve structured data as Python objects.
 

@@ -31,6 +31,9 @@ lint:
 test:
 	$(PYTEST) --verbose
 
+install:
+	$(PIP) install -e .
+
 coverage:
 	$(PYTEST) --cov=src/$(NAME) --cov-report=term-missing --cov-report html --verbose
 

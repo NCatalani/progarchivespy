@@ -32,6 +32,10 @@ jobs:
     - name: Set up virtual environment and dependencies
       run: make setup
 
+    - name: Install package in editable mode
+      run: |
+        make install
+
     - name: Lint the code
       run: make lint
 

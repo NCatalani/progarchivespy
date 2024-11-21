@@ -6,8 +6,6 @@
 #
 beautifulsoup4==4.12.3
     # via progarchivespy (pyproject.toml)
-black==24.10.0
-    # via progarchivespy (pyproject.toml)
 build==1.2.2.post1
     # via pip-tools
 certifi==2024.8.30
@@ -15,42 +13,25 @@ certifi==2024.8.30
 charset-normalizer==3.4.0
     # via requests
 click==8.1.7
-    # via
-    #   black
-    #   pip-tools
+    # via pip-tools
 coverage[toml]==7.6.4
     # via pytest-cov
-flake8==7.1.1
-    # via progarchivespy (pyproject.toml)
 idna==3.10
     # via requests
 iniconfig==2.0.0
     # via pytest
-mccabe==0.7.0
-    # via flake8
 mypy==1.13.0
     # via progarchivespy (pyproject.toml)
 mypy-extensions==1.0.0
-    # via
-    #   black
-    #   mypy
+    # via mypy
 packaging==24.2
     # via
-    #   black
     #   build
     #   pytest
-pathspec==0.12.1
-    # via black
 pip-tools==7.4.1
     # via progarchivespy (pyproject.toml)
-platformdirs==4.3.6
-    # via black
 pluggy==1.5.0
     # via pytest
-pycodestyle==2.12.1
-    # via flake8
-pyflakes==3.2.0
-    # via flake8
 pyproject-hooks==1.2.0
     # via
     #   build
@@ -62,6 +43,8 @@ pytest==8.3.3
 pytest-cov==6.0.0
     # via progarchivespy (pyproject.toml)
 requests==2.32.3
+    # via progarchivespy (pyproject.toml)
+ruff==0.7.4
     # via progarchivespy (pyproject.toml)
 soupsieve==2.6
     # via beautifulsoup4

@@ -6,29 +6,77 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  id-token: write
 
 jobs:
-  deploy:
-
+  build:
+    name: Build distribution 📦
     runs-on: ubuntu-latest
-    environment: test-pypi
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: "3.13"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build
-    - name: Build package
-      run: python -m build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+    - name: Install pypa/build
+      run: python3 -m pip install build --user
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+    - name: Store the distribution packages
+      uses: actions/upload-artifact@v4
       with:
-        user: __token__
-        verbose: true
+        name: python-package-distributions
+        path: dist/
+
+  publish-to-testpypi:
+    name: Publish to TestPyPI
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    environment:
+      name: test-pypi
+      url: https://test.pypi.org/p/progarchivespy
+
+    steps:
+    - name: Debug Environment Variables
+      run: |
+        echo "Repository URL: ${{ vars.PYPI_REPOSITORY_URL }}"
+    - name: Download all the dists
+      uses: actions/download-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish distribution 📦 to TestPyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://test.pypi.org/legacy/
         password: ${{ secrets.PYPI_API_TOKEN }}
-        repository_url: ${{ env.PIPY_REPOSITORY_URL }}
+        verbose: true
+
+  publish-to-pypi:
+
+    name: Publish to PyPI
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    if: ${{ github.event.release && !github.event.release.prerelease }}
+    environment:
+      name: pypi
+      url: https://pypi.org/p/progarchivespy
+
+    steps:
+    - name: Debug Environment Variables
+      run: |
+        echo "Repository URL: ${{ vars.PYPI_REPOSITORY_URL }}"
+    - name: Download all the dists
+      uses: actions/download-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
+        verbose: true

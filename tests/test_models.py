@@ -2,12 +2,11 @@ import pytest
 from progarchivespy.models import AlbumQueryResult, Artist, Album
 from progarchivespy.common import Subgenre, AlbumType
 
+
 @pytest.fixture
 def artist():
-    return Artist(
-        id=1,
-        name="Artist"
-    )
+    return Artist(id=1, name="Artist")
+
 
 @pytest.fixture
 def album():
@@ -22,22 +21,14 @@ def album():
         type=AlbumType.STUDIO,
     )
 
+
 @pytest.fixture
 def album_query_result(artist, album):
-    return AlbumQueryResult(
-        position=1,
-        weighted_score=4.5,
-        album=album,
-        artist=artist
-    )
+    return AlbumQueryResult(position=1, weighted_score=4.5, album=album, artist=artist)
 
 
 def test_artist_serialize(artist):
-    expected = {
-        "id": 1,
-        "name": "Artist",
-        "albums": []
-    }
+    expected = {"id": 1, "name": "Artist", "albums": []}
     assert artist.asdict == expected
 
 
@@ -56,10 +47,11 @@ def test_album_serialize(album):
         "type": {
             "id": AlbumType.STUDIO.id,
             "name": AlbumType.STUDIO.name,
-        }
+        },
     }
 
     assert album.asdict == expected
+
 
 def test_album_query_result_serialize(album_query_result):
     expected = {
@@ -79,12 +71,8 @@ def test_album_query_result_serialize(album_query_result):
             "type": {
                 "id": AlbumType.STUDIO.id,
                 "name": AlbumType.STUDIO.name,
-            }
+            },
         },
-        "artist": {
-            "id": 1,
-            "name": "Artist",
-            "albums": []
-        }
+        "artist": {"id": 1, "name": "Artist", "albums": []},
     }
     assert album_query_result.asdict == expected

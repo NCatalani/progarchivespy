@@ -107,9 +107,9 @@ def test_full_query_with_sample_file(
             "scountries": str(Country.UNITED_KINGDOM.id),
             "salbumtypes": str(AlbumType.STUDIO.id),
             "syears": "1973",
-            "sminavgrating": "3.5",
-            "sminnumratings": "20",
-            "smaxnumratings": "40000",
+            "sminavgratings": "3.5",
+            "sminratings": "20",
+            "smaxratings": "40000",
             "smaxresults": "10",
         },
     )

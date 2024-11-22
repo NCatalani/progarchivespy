@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "progarchivespy"
-version = "0.0.1"
+version = "0.0.2"
 description = "Python API to fetch data from ProgArchives"
 authors = [
     {name = "Nicolas Catalani", email = "nicocatalani@gmail.com"},
@@ -38,7 +38,7 @@ testpaths = [
 ]
 
 [tool.coverage.report]
-fail_under = 95
+fail_under = 100
 show_missing = true
 skip_empty = true
 omit = [

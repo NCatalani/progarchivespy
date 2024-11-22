@@ -1,6 +1,7 @@
 from dataclasses import dataclass, asdict
 from progarchivespy.common import EntityEnum
 
+
 def custom_dict_factory(data):
     """
     Custom dict factory for asdict.

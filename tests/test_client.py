@@ -33,3 +33,36 @@ def test_client_top_albums_by_genre_success(client):
         assert res.album.genre == expected_genre
         assert res.position == expected_position
         assert res.album.ratings >= expected_min_num_ratings
+
+
+def test_client_top_albums_complex_query_success(client):
+    expected_genres = [
+        Subgenre.SYMPHONIC_PROG,
+        Subgenre.CROSSOVER_PROG,
+        Subgenre.KRAUTROCK,
+    ]
+    expected_years = [1970, 1971, 1972, 1973, 1974]
+    expected_result_size = 133
+    expected_min_num_ratings = 60
+    expected_min_avg_rating = 3.3
+
+    result = client.top_albums.query(
+        subgenres=expected_genres,
+        min_num_ratings=expected_min_num_ratings,
+        min_avg_rating=expected_min_avg_rating,
+        years=expected_years,
+        max_results=expected_result_size,
+    )
+
+    # Check if the result has the expected size
+    assert len(result) == expected_result_size
+
+    for i, res in enumerate(result):
+        expected_position = i + 1
+
+        # Sanity checks for each result
+        assert res.position == expected_position
+        assert res.album.genre in expected_genres
+        assert res.album.ratings >= expected_min_num_ratings
+        assert res.album.score >= expected_min_avg_rating
+        assert res.album.year in expected_years

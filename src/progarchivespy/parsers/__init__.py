@@ -6,7 +6,7 @@ from .data import (
     SummaryColumn,
     GenreColumn,
     AlbumTableRow,
-    AlbumTable
+    AlbumTable,
 )
 from .top_albums import (
     PositionBreadcrumb,
@@ -14,7 +14,7 @@ from .top_albums import (
     RatingBreadcrumb,
     SummaryBreadcrumb,
     GenreBreadcrumb,
-    AlbumTableBreadcrumb
+    AlbumTableBreadcrumb,
 )
 
 __all__ = [
@@ -31,5 +31,5 @@ __all__ = [
     "RatingBreadcrumb",
     "SummaryBreadcrumb",
     "GenreBreadcrumb",
-    "AlbumTableBreadcrumb"
+    "AlbumTableBreadcrumb",
 ]

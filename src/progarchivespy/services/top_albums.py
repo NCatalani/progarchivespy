@@ -8,6 +8,7 @@ from progarchivespy.common.definitions import (
     AlbumType,
 )
 from progarchivespy.parsers.top_albums import AlbumTableBreadcrumb
+from progarchivespy.common import logger
 
 
 class TopAlbumsService(Service[list[AlbumQueryResult]]):
@@ -100,14 +101,18 @@ class TopAlbumsService(Service[list[AlbumQueryResult]]):
                         [str(album_type.id) for album_type in arg]
                     )
                 case "min_avg_rating":
-                    params["sminavgrating"] = str(min_avg_rating)
+                    params["sminavgratings"] = str(min_avg_rating)
                 case "min_num_ratings":
-                    params["sminnumratings"] = str(min_num_ratings)
+                    params["sminratings"] = str(min_num_ratings)
                 case "max_num_ratings":
-                    params["smaxnumratings"] = str(max_num_ratings)
+                    params["smaxratings"] = str(max_num_ratings)
 
         res = self.http_client.get(
             f"{PROGARCHIVES_BASE_URL}/top-prog-albums.asp", params=params
+        )
+        logger.debug(
+            "TopAlbumService: Response from ProgArchives",
+            input_url=res.request.url,
         )
         res.raise_for_status()
 

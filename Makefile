@@ -10,7 +10,7 @@ all:
 	@echo "  clean: Remove virtualenv and cache files"
 
 clean:
-	rm -rf $(VENV) .pytest_cache/ .coverage
+	rm -rf $(VENV) .pytest_cache/ .coverage dist/ build/ .ruff_cache/ $(LCOV_FILE) $(COVERAGE_FILE)
 
 env:
 	python -m venv $(VENV) && $(PIP) install pip-tools

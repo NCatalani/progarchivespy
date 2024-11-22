@@ -1,5 +1,6 @@
 import requests
 from typing import Protocol
+from progarchivespy.common import logger
 
 
 class HTTPClient(Protocol):  # pragma: no cover
@@ -68,4 +69,6 @@ class BaseHTTPClient:
         Returns:
             requests.Response: Response object.
         """
+
+        logger.debug("BaseHTTPClient: Sent a HTTP GET Request", url=url, kwargs=kwargs)
         return self.make_request("GET", url, **kwargs)

@@ -41,7 +41,7 @@ def test_client_top_albums_complex_query_success(client):
         Subgenre.CROSSOVER_PROG,
         Subgenre.KRAUTROCK,
     ]
-    expected_years = [1970, 1971, 1972, 1973, 1974]
+    expected_years = [1970, 1983, 2003, 2009, 2014]
     expected_result_size = 133
     expected_min_num_ratings = 60
     expected_min_avg_rating = 3.3

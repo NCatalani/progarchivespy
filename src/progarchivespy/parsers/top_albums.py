@@ -182,7 +182,7 @@ class GenreBreadcrumb(Breadcrumb[GenreColumn]):
         album_type = AlbumType.build(name=album_type)
 
         if not subgenre:
-            raise ParseException(f"Subgenre {subgenre} not found")
+            raise ParseException(f"Subgenre {genre_name} not found")
 
         if not album_type:
             raise ParseException(f"Album type {album_type} not found")

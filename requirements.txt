@@ -6,7 +6,7 @@
 #
 beautifulsoup4==4.12.3
     # via progarchivespy (pyproject.toml)
-certifi==2024.8.30
+certifi==2024.12.14
     # via requests
 charset-normalizer==3.4.0
     # via requests

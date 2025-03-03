@@ -1,34 +1,31 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "pip-tools"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "progarchivespy"
-version = "0.0.3"
+version = "0.0.4"
 description = "Python API to fetch data from ProgArchives"
-authors = [
-    {name = "Nicolas Catalani", email = "nicocatalani@gmail.com"},
-]
-license = {text ="MIT"}
+authors = ["Nicolas Catalani <nicocatalani@gmail.com>"]
+license = "MIT"
 readme = "README.md"
 keywords = ["api", "web-scraping", "music", "progressive-rock", "progarchives"]
-dependencies = [
-    "requests>=2.25.0",
-    "beautifulsoup4>=4.9.3",
-    "structlog>=24.4.0",
-]
-requires-python = ">=3.11,<3.14"
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=8.0.0",
-    "pytest-cov>=6.0",
-    "pip-tools>=7.4.1",
-    "ruff>=0.7.4",
-    "mypy>=1.13.0",
-    "coverage>=7.6.7",
-    "coverage-lcov>=0.3",
-]
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+requests = ">=2.25.0"
+beautifulsoup4 = ">=4.9.3"
+structlog = ">=24.4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0.0"
+pytest-cov = ">=6.0"
+pip-tools = ">=7.4.1"
+ruff = ">=0.9.6"
+mypy = ">=1.13.0"
+coverage = ">=7.6.12"
+coverage-lcov = ">=0.3"
+poetry = "2.1.1"
 
 [tool.pytest.ini_options]
 minversion = "8.0"

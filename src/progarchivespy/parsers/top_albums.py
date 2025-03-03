@@ -96,6 +96,7 @@ class RatingBreadcrumb(Breadcrumb[RatingColumn]):
         """
         col = self.element
 
+
         spans = col.find_all("span")
         divs = col.find_all("div")
 
@@ -225,16 +226,17 @@ class AlbumTableBreadcrumb(Breadcrumb[AlbumTable]):
             ]
 
             # Skip rows with less than 6 columns (standard row)
-            if len(subelements) != 6:
-                raise ParseException(f"Non-standard table row: {subelements}")
+            print(f"subelements: {subelements}")
+            if len(subelements) < 5:
+                raise ParseException(f"Non-standard table row: {subelements} {len(subelements)}")
 
             rows.append(
                 AlbumTableRow(
                     position=PositionBreadcrumb(element=subelements[0]).parse(),
                     cover=CoverBreadcrumb(element=subelements[1]).parse(),
-                    rating=RatingBreadcrumb(element=subelements[2]).parse(),
-                    summary=SummaryBreadcrumb(element=subelements[3]).parse(),
-                    genre=GenreBreadcrumb(element=subelements[4]).parse(),
+                    summary=SummaryBreadcrumb(element=subelements[2]).parse(),
+                    genre=GenreBreadcrumb(element=subelements[3]).parse(),
+                    rating=RatingBreadcrumb(element=subelements[4]).parse(),
                 )
             )
 

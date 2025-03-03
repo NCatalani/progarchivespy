@@ -4,9 +4,9 @@ BIN := $(VENV)/bin
 
 PYTHON := $(BIN)/python
 PIP := $(BIN)/pip
-PIP-UPGRADE := $(BIN)/pip-upgrade
-PIP-COMPILE := $(BIN)/pip-compile
-PIP-SYNC := $(BIN)/pip-sync
+#PIP-COMPILE := $(BIN)/pip-compile
+#PIP-SYNC := $(BIN)/pip-sync
+POETRY := $(BIN)/poetry
 PYTEST := $(BIN)/pytest
 COVERAGE-LCOV := $(BIN)/coverage-lcov
 MYPY := $(BIN)/mypy

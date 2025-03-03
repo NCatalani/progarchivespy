@@ -13,14 +13,13 @@ clean:
 	rm -rf $(VENV) .pytest_cache/ .coverage dist/ build/ .ruff_cache/ $(LCOV_FILE) $(COVERAGE_FILE)
 
 env:
-	python -m venv $(VENV) && $(PIP) install pip-tools
+	python -m venv $(VENV) && $(PIP) install poetry==2.1.1
 
 setup: env
-	$(PIP-SYNC) $(REQUIREMENTS-DEV)
+	. "$(VENV)/bin/activate" && $(POETRY) sync --with dev
 
-compile-deps: env
-	$(PIP-COMPILE) $(PYPROJECT) --extra=all -o $(REQUIREMENTS)	--verbose
-	$(PIP-COMPILE) $(PYPROJECT) --extra=dev -o $(REQUIREMENTS-DEV)
+lock: env
+	$(POETRY) lock
 
 static-analysis:
 	$(MYPY) src/
@@ -28,8 +27,8 @@ static-analysis:
 lint:
 	$(RUFF) check .
 
-install:
-	$(PIP) install -e .
+install: setup
+	$(POETRY) install
 
 coverage:
 	$(PYTEST) --cov=src/$(NAME) --cov-report=term-missing --cov-report=xml --verbose

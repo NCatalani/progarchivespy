@@ -53,16 +53,16 @@ def mock_html():
                     <td><strong>1</strong></td>
                     <td><img src="cover.jpg" /></td>
                     <td>
-                        <div title="Average PA members rating"></div>
-                        <span>4.5</span> | <span>500</span> ratings
-                        <div>QWR = 4.3</div>
-                    </td>
-                    <td>
                         <a href="album.asp?id=123"><strong>Album Name</strong></a>
                         <br/>
                         <a href="artist.asp?id=456">Artist Name</a>
                     </td>
                     <td><strong>Symphonic Prog</strong><br />Studio, 2020</td>
+                    <td>
+                        <div title="Average PA members rating"></div>
+                        <span>4.5</span> | <span>500</span> ratings
+                        <div>QWR = 4.3</div>
+                    </td>
                     <td><strong>Zoo</strong></td>
                 </tr>
             </table>

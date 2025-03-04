@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "progarchivespy"
-version = "0.0.4"
+version = "0.1.0"
 description = "Python API to fetch data from ProgArchives"
 authors = ["Nicolas Catalani <nicocatalani@gmail.com>"]
 license = "MIT"

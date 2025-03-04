@@ -1,15 +1,16 @@
 import pytest
 from bs4 import BeautifulSoup
+from progarchivespy.common.exceptions import ParseException
+from progarchivespy.common.definitions import Subgenre, AlbumType
 from progarchivespy.parsers.top_albums import (
+    # parsers
     PositionBreadcrumb,
     CoverBreadcrumb,
     RatingBreadcrumb,
     SummaryBreadcrumb,
     GenreBreadcrumb,
     AlbumTableBreadcrumb,
-)
-from progarchivespy.common.exceptions import ParseException
-from progarchivespy.parsers.data import (
+    # data
     PositionColumn,
     CoverColumn,
     RatingColumn,
@@ -17,7 +18,6 @@ from progarchivespy.parsers.data import (
     GenreColumn,
     AlbumTable,
 )
-from progarchivespy.common.definitions import Subgenre, AlbumType
 
 
 @pytest.fixture

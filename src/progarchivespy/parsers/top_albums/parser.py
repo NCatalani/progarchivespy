@@ -1,7 +1,8 @@
 from bs4 import Tag
 from progarchivespy.parsers import Breadcrumb
 from progarchivespy.common.exceptions import ParseException
-from progarchivespy.parsers.data import (
+from progarchivespy.common.definitions import AlbumType, Subgenre
+from .data import (
     AlbumTable,
     AlbumTableRow,
     CoverColumn,
@@ -10,7 +11,6 @@ from progarchivespy.parsers.data import (
     RatingColumn,
     SummaryColumn,
 )
-from progarchivespy.common.definitions import AlbumType, Subgenre
 
 
 class PositionBreadcrumb(Breadcrumb[PositionColumn]):
@@ -95,7 +95,6 @@ class RatingBreadcrumb(Breadcrumb[RatingColumn]):
             RatingBreadcrumbData: Data containing the score, ratings and weighted rating.
         """
         col = self.element
-
 
         spans = col.find_all("span")
         divs = col.find_all("div")
@@ -228,7 +227,9 @@ class AlbumTableBreadcrumb(Breadcrumb[AlbumTable]):
             # Skip rows with less than 6 columns (standard row)
             print(f"subelements: {subelements}")
             if len(subelements) < 5:
-                raise ParseException(f"Non-standard table row: {subelements} {len(subelements)}")
+                raise ParseException(
+                    f"Non-standard table row: {subelements} {len(subelements)}"
+                )
 
             rows.append(
                 AlbumTableRow(

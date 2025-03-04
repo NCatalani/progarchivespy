@@ -114,9 +114,6 @@ class TopAlbumsService(Service[list[AlbumQueryResult]]):
             "TopAlbumService: Response from ProgArchives",
             input_url=res.request.url,
         )
-        print(
-            f"TopAlbumService: Response from ProgArchives {res.request.url}",
-        )
         res.raise_for_status()
 
         return self.parse_response(res.text)
